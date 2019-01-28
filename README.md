@@ -1,16 +1,19 @@
 # ProxyExample
 
-Install Ruby with RVM using: `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
+Install Ruby with RVM using:
+`\curl -sSL https://get.rvm.io | bash -s stable --ruby`
 
 Then run `bundle && ruby config.ru` and in another terminal:
 
 ```
-curl --compressed http://localhost:8000/proxy/http://httpbin.org/get
+curl http://localhost:8000/proxy/http://httpbin.org/get
 ```
-(Note the use of `--compressed`, in the original it might return gzipped data, in this version it passes through that information.)
+
+(Note that in the original it might return gzipped data, in this version it
+completely ignores Accept-Encoding headers.)
 
 Or for a POST request:
 
 ```
-curl --compressed -X POST -d asdf=blah  http://localhost:8000/proxy/http://httpbin.org/post
+curl -X POST -d asdf=blah  http://localhost:8000/proxy/http://httpbin.org/post
 ```

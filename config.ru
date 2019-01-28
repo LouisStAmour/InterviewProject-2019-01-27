@@ -18,7 +18,6 @@ module Rack
 
     def request_headers
       {
-        'Accept-Encoding' => env['HTTP_ACCEPT_ENCODING'],
         'Content-Type' => media_type,
         'User-Agent' => env['HTTP_USER_AGENT'],
         'X-Forwarded-For' => env['HTTP_X_FORWARDED_FOR'],
@@ -61,7 +60,6 @@ class HttpProxy
   end
 end
 
-require 'rack/show_exceptions'
 Rack::Server.start(
-  app: Rack::ShowExceptions.new(Rack::Lint.new(HttpProxy.new)), Port: 8000
+  app: HttpProxy.new, Port: 8000
 )
