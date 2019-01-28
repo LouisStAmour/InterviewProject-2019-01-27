@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    connection_pool (2.2.2)
+    patron (0.13.1)
+    rack (2.0.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  connection_pool
+  patron
+  rack
+
+BUNDLED WITH
+   1.16.6
