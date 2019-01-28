@@ -54,11 +54,11 @@ class HttpProxy
         [ 400, {}, ["Unsupported URL"] ]
       end
     rescue => exception
-      [ 400, {}, [exception.to_s] ]
+      [ 400, {}, ["#{exception.class}: #{exception.message}"] ]
     end
   end
 end
 
 Rack::Server.start(
-  app: HttpProxy.new, Port: 8000
+  app: HttpProxy.new, Port: 8000, Host: "0.0.0.0"
 )

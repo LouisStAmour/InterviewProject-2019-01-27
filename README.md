@@ -1,5 +1,12 @@
 # ProxyExample
 
+## Automatic, with docker
+
+Run: `docker build -t proxyexample .` then
+`docker run -h proxyexample -p 8000:8000 proxyexample:latest`
+
+## Manually without docker
+
 Install Ruby with RVM using:
 `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
 
