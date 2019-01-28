@@ -3,7 +3,10 @@
 Install Ruby with RVM using:
 `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
 
-Then run `bundle && ruby config.ru` and in another terminal:
+If on Mac, make sure you have Curl installed using `brew install curl`
+
+Finally, to start the app run `bundle && ruby config.ru` and in another
+terminal:
 
 ```
 curl http://localhost:8000/proxy/http://httpbin.org/get

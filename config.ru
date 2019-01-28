@@ -54,8 +54,7 @@ class HttpProxy
         [ 400, {}, ["Unsupported URL"] ]
       end
     rescue => exception
-      $stderr.puts exception.inspect
-      [ 400, {}, [exception] ]
+      [ 400, {}, [exception.to_s] ]
     end
   end
 end
