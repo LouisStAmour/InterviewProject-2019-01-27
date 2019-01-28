@@ -43,7 +43,7 @@ class HttpProxy
         url = req.path_info[7..-1]
         url += "?#{req.query_string}" unless req.query_string.empty?
         body = req.body.read
-        options = body.nil? ? {} : { data: body, multipart: false }
+        options = {max_redirects: 0}.merge(body.nil? ? {} : { data: body, multipart: false })
         @patron_pool.with do |session|
           response = session.request req.request_method, url, req.request_headers, options
           remapped_headers = response.headers.select{|k,v| k != "Transfer-Encoding"}
