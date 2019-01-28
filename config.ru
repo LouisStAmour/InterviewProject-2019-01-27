@@ -17,14 +17,12 @@ module Rack
     end
 
     def request_headers
-      headers = {}
-      user_agent = env['HTTP_USER_AGENT']
-      forwarded_for = env['HTTP_X_FORWARDED_FOR']
-      content_type = media_type
-      headers['Content-Type'] = content_type if content_type
-      headers['User-Agent'] = user_agent if user_agent
-      headers['X-Forwarded-For'] = forwarded_for if forwarded_for
-      headers
+      {
+        'Accept-Encoding' => env['HTTP_ACCEPT_ENCODING'],
+        'Content-Type' => media_type,
+        'User-Agent' => env['HTTP_USER_AGENT'],
+        'X-Forwarded-For' => env['HTTP_X_FORWARDED_FOR'],
+      }.select{|k,v| !v.nil? }
     end
   end
 end
